@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sportmeeting1.dao.JudgeMapper">
+    <resultMap id="BaseResultMap" type="com.example.sportmeeting1.model.Judge">
+        <id column="judge_ID" jdbcType="INTEGER" property="judgeId" />
+        <result column="judgeName" jdbcType="VARCHAR" property="judgename" />
+        <result column="sex" jdbcType="INTEGER" property="sex" />
+        <result column="Tel" jdbcType="INTEGER" property="tel" />
+        <result column="team_id" jdbcType="INTEGER" property="teamId" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+    </resultMap>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+        select
+            judge_ID, judgeName, sex, Tel, team_id, password
+        from judge
+        where judge_ID = #{judgeId}
+    </select>
+    <select id="selectAll"  resultMap="BaseResultMap">
+        select
+            judge_ID, judgeName, sex, Tel, team_id, password
+        from judge
+    </select>
+    <insert id="insertJudge" >
+        insert into judge(judgeName,judge_ID,Tel,team_id)
+        values (#{judgeName},#{judgeId},#{tel},#{teamNumber})
+    </insert>
+</mapper>

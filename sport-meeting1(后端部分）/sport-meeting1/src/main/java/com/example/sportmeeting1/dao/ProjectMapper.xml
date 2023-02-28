@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sportmeeting1.dao.ProjectMapper">
+    <resultMap id="BaseResultMap" type="com.example.sportmeeting1.model.Project">
+        <id column="order_number" jdbcType="INTEGER" property="orderNumber" />
+        <result column="project_number" jdbcType="INTEGER" property="projectNumber" />
+        <result column="project_location" jdbcType="VARCHAR" property="projectLocation" />
+        <result column="age_group" jdbcType="VARCHAR" property="ageGroup" />
+        <result column="sex_group" jdbcType="VARCHAR" property="sexGroup" />
+        <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+        <result column="group_number" jdbcType="INTEGER" property="groupNumber" />
+        <result column="project_time" jdbcType="VARCHAR" property="projectTime" />
+    </resultMap>
+    <select id="selectProjectNumber" resultMap="BaseResultMap" >
+        select
+            order_number, project_number, project_location, age_group, sex_group, project_name,
+            group_number, project_time
+        from project
+        where project_number = #{projectNumber}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap" >
+        select
+            order_number, project_number, project_location, age_group, sex_group, project_name,
+            group_number, project_time
+        from project
+    </select>
+    <insert id="insert" parameterType="com.example.sportmeeting1.model.Project">
+        insert into project ( project_number, project_location,
+                              age_group, sex_group, project_name,
+                              group_number, project_time)
+        values ( #{projectNumber,jdbcType=INTEGER}, #{projectLocation,jdbcType=VARCHAR},
+                 #{ageGroup,jdbcType=VARCHAR}, #{sexGroup,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR},
+                 #{groupNumber,jdbcType=INTEGER}, #{projectTime,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sportmeeting1.dao.JudgeJoinMapper">
+    <resultMap id="BaseResultMap" type="com.example.sportmeeting1.model.JudgeJoin">
+        <id column="order_number" jdbcType="INTEGER" property="orderNumber" />
+        <result column="judge_ID" jdbcType="INTEGER" property="judgeId" />
+        <result column="project_number" jdbcType="INTEGER" property="projectNumber" />
+        <result column="group_number" jdbcType="INTEGER" property="groupNumber" />
+    </resultMap>
+    <select id="selectByJudgeId" resultMap="BaseResultMap" >
+        select
+            order_number, judge_ID, project_number, group_number
+        from judge_join
+        where judge_ID = #{judgeId} order by order_number desc
+  </select>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sportmeeting1.dao.LeaderMapper">
+    <resultMap id="BaseResultMap" type="com.example.sportmeeting1.model.Leader">
+        <id column="name" jdbcType="VARCHAR" property="leaderName" />
+        <result column="id" jdbcType="VARCHAR" property="leaderId" />
+        <result column="telephone" jdbcType="VARCHAR" property="leaderTel" />
+        <result column="team_id" jdbcType="VARCHAR" property="teamId" />
+    </resultMap>
+    <insert id="insertLeader" >
+        insert into leader(name,id,telephone,team_id)
+        values (#{leaderName},#{leaderId},#{leaderTel},#{teamId})
+    </insert>
+</mapper>
